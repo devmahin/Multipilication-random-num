@@ -1,10 +1,10 @@
 const question = document.getElementById("question");
-const score = document.getElementById("score");
 const form = document.querySelector("form");
+const score = document.getElementById("score");
 const formalElement = document.getElementById("formalElement");
 let currectAns = 0;
-
-
+let scoreVau = 0;
+score.innerText = scoreVau;
 function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
@@ -26,12 +26,15 @@ function htmlShow() {
     currectAns = total;
 }
 htmlShow()
-
 function check(e) {
     e.preventDefault();
     let value = new FormData(formalElement);
-    let userValue = value.get("ans");
+    let userValue = +value.get("ans");
+    console.log(userValue, currectAns)
     if(userValue === currectAns){
-        
+        scoreVau++;
+    }else{
+        scoreVau--;
     }
+
 }
